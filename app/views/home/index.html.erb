@@ -1,4 +1,26 @@
-<h1>Welcome to Crypto!</h1>
-<br  /><br />
 
-<%= @output  %>
+<h1>Welcome to Expert Crypto!</h1>
+<br  />
+<% @output["Data"]  %>
+<div class="container">
+  <div class="row">
+<% for x in @output["Data"] %>
+
+  <div class="col-sm">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%= x["imageurl"] %>" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= x["title"] %></h5>
+        <p class="card-text"><%= x["body"] %></p>
+        <%= link_to "Read More", x["url"], class: "btn btn-secondary"  %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+  </div>
+</div>
+
+
+
+
