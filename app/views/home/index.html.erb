@@ -1,9 +1,35 @@
 
-<h1>Welcome to Expert Crypto!</h1>
-<br  />
-<% @output["Data"]  %>
 <div class="container">
+  <h1>Crypto Currency Data</h1>
+  <% @prices["DISPLAY"]  %>
+  <div class="card mt-3 mb-4">
+  <table class="table table-sm table-success table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">24HR High</th>
+        <th scope="col">24HR Low</th>
+        <th scope="col">Market Cap</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <% @prices["DISPLAY"].each do |key, value|  %>
+        <th scope="row"><%= key %></th>
+        <td><%= value["USD"]["PRICE"] %></td>
+        <td><%= value["USD"]["HIGHDAY"] %></td>
+        <td><%= value["USD"]["LOWDAY"] %></td>
+        <td><%= value["USD"]["MKTCAP"] %></td>
+      </tr>
+      </tbody>
+    <% end %>
+        </table>
+  </div>
+  <h1>Crypto Currency News</h1>
+  <br />
   <div class="row">
+    <% @output["Data"]  %>
 <% for x in @output["Data"] %>
 
   <div class="col-sm-4">
@@ -12,7 +38,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= x["title"] %></h5>
         <p class="card-text"><%= x["body"] %></p>
-        <%= link_to "Read More", x["url"], class: "btn btn-secondary"  %>
+        <%= link_to "Read More", x["url"], class: "btn btn-warning"  %>
       </div>
     </div>
   </div>
